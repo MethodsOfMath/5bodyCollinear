@@ -1,4 +1,99 @@
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="https://sagecell.sagemath.org/static/sagecell_embed.css">
+</head>
+<body>
+<script src="https://sagecell.sagemath.org/static/embedded_sagecell.js"></script>
+<script>sagecell.makeSagecell({"inputLocation": ".sage"});</script>
+
+<div class="sage">
+  
+  
+  <h2><a href="E14">E<sub>14</sub></a></h2>
+  <script type="text/x-sage">
+  
+ 
+# https://sagecell.sagemath.org/?z=eJyFVl1v2jAUfR4S_8FqHxoncRInzqZWYpq0h75Qqb-giIVA0Qggx9q6_frd668YCKwVikOOzzn3wzes5aEj_XLTZv2f7sdht20y2e6WanvYk213PEhFVNurhfty0S0_tt1yOrmXZEaKTEwn08mvpYweeqLInHTVA51OVvAs6pOSvpVxpMy1h496K0lCRAzP7LfRGYxZGJCs-Rxo1AgI9msiuOV0IKOEjXIDEvCU5isAcCRuLoj7gf3UIZJet5uI-JS6RM8cFeGjJTQidMWTniZaIWRCGRWaQVg8RCDi82hBFAV9LCehA0USnURwmkCRON-J9l2j70tdm1C_BgSCGwfuTzJ2BhPI6RXP7Gt9NpIa3Oj5h9wEJQgIsPvw_9t2r1q5bBT0Xrsmi0jO-t121cqoSIvs8fExJb1qj4t--7edFVlRcEqfphMCf7gdrxteYelyMCFNTJDVfAV6Qa2cC0AxqXObkLMCewJ22bUeArlgBhSk0QEdA7XGysqUGM2IMTaeKCZ9o1_SyQQTe1rOQMw6uQzE7cMO4njbQwmxtNqWqIYuGHYYSNjNV41qgSDOGgm9QW_MZnjIaxhk6MrQ3JdZ5dbN3lmEYRK4SwgcVC8PjDa70LJxYEAyh67nt6qIDPKTlcTZN_A1V_ia__FZ182Z6yZ0zX2coNns82blk9BxPHsYNm7jTdzQGJfQ5XFXUXNCDbI0yHJuBDyyvEAKgxQaKQak0EgIWMRqKI3bVZtd9dwG7nbVbpcaOyMukrU-lkEclnatT0Xg2sJ1VwYWHVw3V2AiaBfhZ8D9Ztl1yzocW4Mfw1PNg5YyjUSHWTEcL2PB8MWga0eVIXnxRwenjs71KAmeMU8CCaNmWmuSZzOugMvzvmCI1Vynt6vy5-EJ-f7eNj_97VHCvCR3L_yJ3KWjL_gIGp41jDN4V3Vljq8TpPQjIelEHpV2WeNSmREzg18F9EymvC3DWUNZx3PzUkcVP4JBReDFKFzjr27yS0sfDqfODx8diD-YKORn85iUuCnlIrH1YyAjmA5IM2Km1Bkxccz1bWaYnJbbp9qE4V-RJnHKTXOIK9BypX-FFpHtBsmPu4OCJq5y7EGGJyfHfvtKihTaPy3SzxQWPSwqSofdr9io7YeCX3wPacSKrE559qUehyiAlIAAmHCI_v3wO3p18V8Y-AdknnbG&lang=sage
+
+
+#from sage.symbolic.relation import test_relation_maxima
+#r = 0.4
+
+var('s t L m3')
+d = (s+2)^2*(t+2)^2*s^2*t^2 + 4*(s+t+2)^2*((s+2)^2*(t+2)^2-s^2*t^2)
+f1L = t^2*((s+2)^2*(t+2)^2*(s^2 + (t+1)*(s+t+2)^2) - 4*(s+t+2)^2*((s+2)^2 + s^2))/d - 1
+f1c = t^2*((s+2)^2*(s^2*(t+2)^2 + 4*(s+t+2)^2) - (s+t+2)^2*((s+2)^2*(t+2)^2+4*s^2))/d - 1
+f2L = 1 + s + t^2*(4*s^2*(s+t+2)^2*(1+s)+4*(s+2)^2*(t+2)^2 - (t+2)^2*(s^2*(1+s)*(s+2)^2 + 4*(t+1)*(s+t+2)^2))/d
+f2c = t^2*(4*(s+t+2)^2*(s^2+(t+2)^2) - (s+2)^2*(t+2)^2*(4+s^2))/d + 1
+f5L = s^2*(1+s)*(s+2)^2 - 4*(s+2)^2 - 4*s^2
+f5c = s^2*(s+2)^2 + 4*(s+2)^2 - 4*s^2
+f4L = (t+2)^2*((t+1)*(s+t+2)^2+s^2)-s^2*(s+t+2)^2*(1+s)
+f4c = s^2*(t+2)^2 - (s+t+2)^2*((t+2)^2+s^2)
+
+
+
+@interact
+def _(r=slider(0,0.999, step_size=0.001)):
+    
+
+    g13 = 1/(1+r)^2 + t^2/d*((4*(s+2)^2*(s+t+2)^2/(1-r)^2) + 4*s^2*(s+t+2)^2/(1+r)^2 -(s+2)^2*(t+2)^2*(s+t+2)^2/(t+1-r)^2 -s^2*(s+2)^2*(t+2)^2/(1+r)^2)
+    g23 = t^2/d*(4*(t+2)^2*(s+t+2)^2/(1+t-r)^2 + s^2*(s+2)^2*(t+2)^2/(r+1+s)^2 - 4*(s+2)^2*(t+2)^2/(1-r)^2 - 4*s^2*(s+t+2)^2/(r+1+s)^2) - 1/(r+s+1)^2
+    g43 = s^2*(s+t+2)^2/(r+s+1)^2 - (t+2)^2*((s+t+2)^2/(1+t-r)^2 + s^2/(r+1)^2)
+    g53 = 4*(s+2)^2/(1-r)^2 + 4*s^2/(1+r)^2 - s^2*(s+2)^2/(r+s+1)^2
+
+    #2.3
+
+    cn = s^2*(f1L/(r+s+1)^2 + f2L/(r+1)^2) - t^2/d*(f4L*4*(s+2)^2/(r-1)^2 + f5L*(t+2)^2*(s+t+2)^2/(t+1-r)^2) - r	
+    cd =  t^2/d*(f4c*4*(s+2)^2/(r-1)^2 + f5c*(t+2)^2*(s+t+2)^2/(t+1-r)^2) - s^2*(f1c/(r+s+1)^2 + f2c/(r+1)^2) - 1
+
+    c = cn/cd
+
+    #m1 = ((f1L + f1c*c)*L + g13*m3)*s^2
+    #m2 = ((f2L + f2c*c)*L + g23*m3)*s^2
+    #m4 = ((f4L + f4c*c)*L + g43*m3)/d*4*t^2*(s+2)^2
+    #m5 = ((f5L + f5c*c)*L + g53*m3)/d*t^2*(t+2)^2*(s+t+2)^2
+
+    f13 = f1L + f1c*c
+    #f23 = f2L + f2c*c
+    f43 = f4L + f4c*c
+    #f53 = f5L + f5c*c
+
+    #2.4 
+
+    #gamma5 = (t+2)^2*(s+t+2)^2
+    #f3L = s^2*(f1L + f2L) + t^2/d*(4*(s+2)^2*f4L + gamma5*f5L)
+
+
+    #fM3 = s^2*(g13 + g23) + t^2/d*(4*(s+2)^2*g43 + gamma5*g53) + 1
+    #G3 = 1/fM3
+
+    #M = f3L*L + m3/G3
+
+    # Check
+
+    #print "M1: ", test_relation_maxima(L*(-c-1-s)+m2/s^2+ m3/(r+1+s)^2+m4/(2+s)^2+m5/(2+t+s)^2 == 0)
+    #print "M2: ", test_relation_maxima(L*(-1-c)-m1/s^2 + m3/(1+r)^2 + m4/4 + m5/(2+t)^2 == 0)
+    #print "M3: ", test_relation_maxima(L*(r-c)-m1/(r+s+1)^2 - m2/(r+1)^2+m4/(r-1)^2 + m5/(t+1-r)^2 == 0)
+    #print "M4: ", test_relation_maxima(L*(1-c)-m1/(s+2)^2-m2/4-m3/(1-r)^2+m5/t^2 == 0)
+    # print "M5: ", test_relation_maxima(L*(1+t-c)-m1/(2+t+s)^2 - m2/(t+2)^2 - m3/(1+t-r)^2 - m4/t^2 == 0)
+
+
+    P = region_plot(f13/g13 - f43/g43 > 0, (t,0,6), (s,0,3))
+    P = P + text('s',(-0.5,1.75))
+    P = P + text('t',(2.5,-0.4))
+    show(P)
+    #f13/g13 - f43/g43
+
+ 
+  </script>
+</div>
+
+
+</body>
+</html>
+
+
 <ul>
-<li><a href="E14">E<sub>14</sub></a></li>
+<li></li>
 <li><a href="E25">E<sub>25</sub></a></li>
 </ul>
