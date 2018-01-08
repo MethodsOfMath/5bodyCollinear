@@ -87,13 +87,71 @@ def _(r=slider(0,0.999, step_size=0.001)):
  
   </script>
 </div>
+  <h2><a href="E25">E<sub>25</sub></a></h2>  
+<div class="sage">
+  <script type="text/x-sage">
+  
+  # https://sagecell.sagemath.org/?z=eJyFVtuO2jAQfS4S_2AtD8QJJjhxWu1KVJX6sC-stF-wKA2BRSWAHKvd9us7Y8cXQqC7QhhyfM6Z8cyYCdnKU0PaclfP2z_Nj9NhX81lfSjV_nQk--Z8koqoulVr--W6KT_2TTkeTSRZksVcjEfj0a9SRtOWKLIiTT6l49EGnkVtktG3LI6UeW_hpd4ykhARw7Pu26gHYx0MSLZ8BTRqAAT7NRF85NSTUcIGuQEJeErTDQA4EldXxK1nv3SIpLftJiK-pM7QM0dFeGkJjQhd8aSliVYImVBGhWYQFvsIRNyPFkRR0MVyETpQJNFFBJcJFIn1nWjfBfq-1u0S6taAQHBlwe1FxnowgZxOsWdf67OB1OBGx-9zExxBQIDVh__f9kdVy7JSUHv1lqwjuWwP-00tI7aYPz4-zhYz0qr6vG73f-vlYr5YcEqfxiMCf7gf33c8x7NLwYU0QUFa0w0IBodlbQCKSZ3chPRO2BGw67J1EEgGM6AgjxZoGWhnLMvNGaMZMcTGE8Wkq_RrOplgZi_PMxDrnFwHYvdhCXH82MIZ4tlqWyL3ZeB3GEhYzjeNaoEgzgIJnUFnrMuwz2sYZOjK0EyyeW7X1dFahGkSuEsIdKqTB8Yuu1CzcWBAMosuVvdOERnkp04Sh5_nq27wVf_j61xXPddV6Jq7OEGzOqbVxiWh4dh8GDZu41Vc0RiXUOVxk1PTogaZGWS2MgIOmV0hhUEKjRQeKTQSAhax8kdjdxVmV7HqAre7CrtLDfWIi2Sr-zIIxHy_1V0RuLZwXZaBxw6uiyswEZSLcDNgsiubpizCueX9GPp8FZSUKSTqZ4VvL-PA8MWg280qQ_LiWgenjs71IAn2mCOBhFEzrjXJsxlXwOV4XzDEfKXT2-Tps39Cvr_X1U_38SxhYJKHF_5EHmaDN3wEBc8qxhlcVk2W4n2ClG4kJI1Io6xbFrhUZsQs4WcB7clk92U4qyhreGpudVRxIxhUBL4ZhVv8-V1-2dGHw6lxw0cH4hoThdxsHpISd6VsJN35MZARTAekGTFTqkdMLHNxnxkmZ8ftUm3CcHekSZyy0xziCrTs0b9Cich6h-Tnw0lBW-YpDl6GDZXiVfOVwGUZtXBlfqawULDIKfW7X7FQ6w8VTdV0hvdrMePzL8UwpAVIBgiACYto30-_o1fq2zvFJgADAlYi_wc1x3c6&lang=sage
+# from sage.symbolic.relation import test_relation_maxima
+#r = 0.4
+var('s t L m3')
+d = (s+2)^2*(t+2)^2*s^2*t^2 + 4*(s+t+2)^2*((s+2)^2*(t+2)^2-s^2*t^2)
+f1L = t^2*((s+2)^2*(t+2)^2*(s^2 + (t+1)*(s+t+2)^2) - 4*(s+t+2)^2*((s+2)^2 + s^2))/d - 1
+f1c = t^2*((s+2)^2*(s^2*(t+2)^2 + 4*(s+t+2)^2) - (s+t+2)^2*((s+2)^2*(t+2)^2+4*s^2))/d - 1
+f2L = 1 + s + t^2*(4*s^2*(s+t+2)^2*(1+s)+4*(s+2)^2*(t+2)^2 - (t+2)^2*(s^2*(1+s)*(s+2)^2 + 4*(t+1)*(s+t+2)^2))/d
+f2c = t^2*(4*(s+t+2)^2*(s^2+(t+2)^2) - (s+2)^2*(t+2)^2*(4+s^2))/d + 1
+f5L = s^2*(1+s)*(s+2)^2 - 4*(s+2)^2 - 4*s^2
+f5c = s^2*(s+2)^2 + 4*(s+2)^2 - 4*s^2
+f4L = (t+2)^2*((t+1)*(s+t+2)^2+s^2)-s^2*(s+t+2)^2*(1+s)
+f4c = s^2*(t+2)^2 - (s+t+2)^2*((t+2)^2+s^2)
+@interact
+def _(r=slider(-0.999,0, step_size=0.001)):
+    
+    g13 = 1/(1+r)^2 + t^2/d*((4*(s+2)^2*(s+t+2)^2/(1-r)^2) + 4*s^2*(s+t+2)^2/(1+r)^2 -(s+2)^2*(t+2)^2*(s+t+2)^2/(t+1-r)^2 -s^2*(s+2)^2*(t+2)^2/(1+r)^2)
+    g23 = t^2/d*(4*(t+2)^2*(s+t+2)^2/(1+t-r)^2 + s^2*(s+2)^2*(t+2)^2/(r+1+s)^2 - 4*(s+2)^2*(t+2)^2/(1-r)^2 - 4*s^2*(s+t+2)^2/(r+1+s)^2) - 1/(r+s+1)^2
+    g43 = s^2*(s+t+2)^2/(r+s+1)^2 - (t+2)^2*((s+t+2)^2/(1+t-r)^2 + s^2/(r+1)^2)
+    g53 = 4*(s+2)^2/(1-r)^2 + 4*s^2/(1+r)^2 - s^2*(s+2)^2/(r+s+1)^2
+    #2.3
+    cn = s^2*(f1L/(r+s+1)^2 + f2L/(r+1)^2) - t^2/d*(f4L*4*(s+2)^2/(r-1)^2 + f5L*(t+2)^2*(s+t+2)^2/(t+1-r)^2) - r	
+    cd =  t^2/d*(f4c*4*(s+2)^2/(r-1)^2 + f5c*(t+2)^2*(s+t+2)^2/(t+1-r)^2) - s^2*(f1c/(r+s+1)^2 + f2c/(r+1)^2) - 1
+    c = cn/cd
+    #m1 = ((f1L + f1c*c)*L + g13*m3)*s^2
+    #m2 = ((f2L + f2c*c)*L + g23*m3)*s^2
+    #m4 = ((f4L + f4c*c)*L + g43*m3)/d*4*t^2*(s+2)^2
+    #m5 = ((f5L + f5c*c)*L + g53*m3)/d*t^2*(t+2)^2*(s+t+2)^2
+    #f13 = f1L + f1c*c
+    f23 = f2L + f2c*c
+    #f43 = f4L + f4c*c
+    f53 = f5L + f5c*c
+    #2.4 
+    #gamma5 = (t+2)^2*(s+t+2)^2
+    #f3L = s^2*(f1L + f2L) + t^2/d*(4*(s+2)^2*f4L + gamma5*f5L)
+    #fM3 = s^2*(g13 + g23) + t^2/d*(4*(s+2)^2*g43 + gamma5*g53) + 1
+    #G3 = 1/fM3
+    #M = f3L*L + m3/G3
+    # Check
+    #print "M1: ", test_relation_maxima(L*(-c-1-s)+m2/s^2+ m3/(r+1+s)^2+m4/(2+s)^2+m5/(2+t+s)^2 == 0)
+    #print "M2: ", test_relation_maxima(L*(-1-c)-m1/s^2 + m3/(1+r)^2 + m4/4 + m5/(2+t)^2 == 0)
+    #print "M3: ", test_relation_maxima(L*(r-c)-m1/(r+s+1)^2 - m2/(r+1)^2+m4/(r-1)^2 + m5/(t+1-r)^2 == 0)
+    #print "M4: ", test_relation_maxima(L*(1-c)-m1/(s+2)^2-m2/4-m3/(1-r)^2+m5/t^2 == 0)
+    # print "M5: ", test_relation_maxima(L*(1+t-c)-m1/(2+t+s)^2 - m2/(t+2)^2 - m3/(1+t-r)^2 - m4/t^2 == 0)
+    P = region_plot(f53/g53 - f23/g23 > 0, (s,0,6), (t,0,3))
+    P = P + text('t',(-0.5,1.75))
+    P = P + text('s',(2.5,-0.4))
+    show(P)
+    #f13/g13 - f43/g43
+  
+  
+  </script>
+</div>
 
 
 </body>
 </html>
 
 
-<ul>
-<li></li>
-<li><a href="E25">E<sub>25</sub></a></li>
-</ul>
+</body>
+</html>
+
+
+
